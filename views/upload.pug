@@ -2,9 +2,14 @@ extends layouts/main
 
 block content
     .form-container
-        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-            label(for="file") Video File
-            input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-            input(type="text", placeholder="Title", name="title", required=true)
-            textarea(name="description", placeholder="Description", required=true)
-            input(type="submit", value="Upload Video")
+        .settings
+            form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+                i.fas.fa-cloud-upload-alt.fa-4x
+                .setting__video
+                    label(for="file") Video File
+                    input(type="file", id="file", name="videoFile", required=true, accept="video/*")
+                .setting__title
+                    input(type="text", placeholder="Title", name="title", required=true)
+                .setting__description
+                    textarea(name="description", placeholder="Description", required=true)
+                input.form__submit(type="submit", value="Upload Video")

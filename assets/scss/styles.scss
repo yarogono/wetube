@@ -1,5 +1,16 @@
-@import "config/_variables.scss";
-@import "config/reset.scss";
-@import "main.scss";
+// Config
+@import "config/_variables";
+@import "config/reset";
 
-@import "partials/header.scss";
+// Partials
+@import "partials/header";
+@import "partials/footer";
+@import "partials/form";
+
+// Pages
+@import "pages/home";
+@import "pages/videoDetail";
+@import "pages/search";
+
+// Main
+@import "main";

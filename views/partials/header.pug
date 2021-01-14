@@ -1,13 +1,16 @@
 header.header
     .header__column
         a(href=routes.home)
-            i.fab.fa-youtube
+            i.fas.fa-paw.fa-2x
+            span #{siteName}
     .header__column
         form(action=routes.search, method="get")
-            input(type="text", placeholder="Search by term...", name="term")
+            button(src="button")
+                i.fas.fa-search
+            input(type="text", placeholder="Search", name="term")
     .header__column
         ul
-            if !user.isAuthenticated
+            if !user
                 li
                     a(href=routes.join) Join
                 li

@@ -1,0 +1,192 @@
+.form-container {
+  margin-top: 7vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  input {
+    width: 20vw;
+    height: 5vh;
+  }
+  form {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    width: 30%;
+    height: 65%;
+    .form__content {
+      display: flex;
+      align-items: center;
+      width: 65%;
+      margin-bottom: 2vh;
+      box-shadow: $melon 0px 2px 4px;
+      border-radius: 15px;
+      i {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.6;
+        width: 3vw;
+        height: 5vh;
+        border-right: 1px $melon solid;
+      }
+      input {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        font-size: 20px;
+      }
+    }
+    .form__submit {
+      background-color: $melon;
+      color: white;
+      font-size: 20px;
+      letter-spacing: 2.2px;
+      font-weight: 600;
+      margin-top: 20px;
+      border-radius: 3px;
+      box-shadow: rgba(233, 197, 40, 0.4) 0px 0px 0px 3px;
+      transition: 0.2s all linear;
+      &:hover {
+        color: $ginger;
+        box-shadow: rgba(233, 197, 40, 0.8) 0px 0px 0px 4px;
+      }
+    }
+  }
+  .social-login {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin-bottom: 13px;
+      width: 70%;
+      height: 5vh;
+      border: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 2.2px;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 33px,
+        rgba(0, 0, 0, 0.22) 0px 10px 11px;
+      i {
+        margin-right: 5px;
+      }
+      transition: 0.1s opacity linear;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    .social-login--github {
+      background-color: black;
+    }
+    .social-login--facebook {
+      background-color: $blue;
+    }
+  }
+}
+
+.settings {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  i {
+    font-size: 180px;
+    color: $ginger;
+    margin-bottom: 2vh;
+    opacity: 0.8;
+  }
+  .setting__video {
+    width: 21vw;
+    height: 5vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
+      padding: 10px 27px;
+      background-color: $amber;
+      border-radius: 4px;
+      color: white;
+      font-weight: 700;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      transition: 0.2s all linear;
+      &:hover {
+        opacity: 0.7;
+        background-color: $ginger;
+        color: $amber;
+      }
+    }
+    input {
+      display: none;
+    }
+  }
+  .setting__title {
+    width: 21vw;
+    border: 2px $amber solid;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    margin-bottom: 2vh;
+    input {
+      border-radius: 7px;
+      font-size: 20px;
+      padding: 5px;
+      &::placeholder {
+        font-size: 20px;
+      }
+    }
+  }
+  .setting__description {
+    width: 22vw;
+    border: 2px $amber solid;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+      rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+      rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    textarea {
+      border-radius: 7px;
+      border: none;
+      width: 100%;
+      font-size: 20px;
+      min-height: 15vh;
+      padding: 10px;
+      resize: none;
+      &::placeholder {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+  }
+  h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1.5vh;
+    color: $ginger;
+    letter-spacing: 1.5px;
+  }
+}
+
+.form-container__link.form-container__link--delete {
+  margin-top: 3vh;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: $salamander;
+  box-shadow: rgba(214, 3, 3, 0.3) 0px 0px 0px 3px;
+  transition: 0.2s all linear;
+  &:hover {
+    color: $amber;
+    box-shadow: rgba(233, 197, 40, 0.8) 0px 0px 0px 4px;
+  }
+}

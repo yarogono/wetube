@@ -127,3 +127,24 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+// tag outliine, decoration None
+a {
+  text-decoration: none;
+}
+
+input,
+button {
+  text-decoration: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+video,
+textarea {
+  &:focus {
+    outline: none;
+  }
+}

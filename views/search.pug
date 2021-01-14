@@ -2,15 +2,19 @@ extends layouts/main
 include mixins/videoBlock
 
 block content
-    .search__header
-        h3 Searching for: #{searchingBy}
-    .search__videos
-        if videos.length === 0
-            h5 No Videos Found
-        each item in videos
-            +videoBlock({
-                title:item.title,
-                views:item.views,
-                videoFile:item.videoFile,
-                id:item.id
-            })
+    .search
+        .search__header
+            h3 Searching for: #{searchingBy}
+        .search__videos
+                if videos.length === 0
+                    .notFound
+                        img(src="https://dispatch.cdnser.be/wp-content/uploads/2018/06/20180607225725_f.jpg")
+                        h5 No Videos Found
+                each item in videos
+                    .videosBlocks
+                        +videoBlock({
+                            title:item.title,
+                            views:item.views,
+                            videoFile:item.fileUrl,
+                            id:item.id
+                        })

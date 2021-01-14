@@ -3,7 +3,11 @@ extends layouts/main
 block content
     .form-container
         form(action=routes.login, method="post")
-            input(type="email", name="email", placeholder="Email", required=true)
-            input(type="password", name="password", placeholder="Password", required=true)
-            input(type="submit", value="Log In")
-        include partials/socialLogin
+            .form__content
+                i.fas.fa-envelope-square.fa-lg
+                input(type="email", name="email", placeholder="Email", required=true)
+            .form__content
+                i.fas.fa-unlock-alt.fa-lg
+                input(type="password", name="password", placeholder="Password", required=true)
+            input.form__submit(type="submit", value="Log In")
+            include partials/socialLogin

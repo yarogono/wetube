@@ -1,0 +1,95 @@
+.header {
+  width: 100%;
+  height: 7vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $melon;
+  font-family: "Roboto", sans-serif;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  z-index: 1;
+  .header__column:first-child {
+    display: felx;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    i {
+      color: white;
+      padding: 6px;
+    }
+    span {
+      color: white;
+      font-size: 25px;
+      font-weight: 700;
+    }
+    &:hover {
+      i,
+      span {
+        color: $ginger;
+      }
+    }
+  }
+  .header__column {
+    width: 30%;
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      width: 20vw;
+      border-top-right-radius: 12px;
+      border-bottom-right-radius: 12px;
+      padding: 4px;
+      position: relative;
+      button {
+        top: 0;
+        left: 0;
+        position: absolute;
+        height: 100%;
+        border: none;
+        border-right: 2px $melon solid;
+        transition: 0.2s background-color linear;
+        background-color: white;
+        outline: none;
+        &:hover {
+          background-color: $ginger;
+        }
+        i {
+          color: $melon;
+          font-size: 17px;
+        }
+      }
+    }
+    input {
+      width: 90%;
+      border: none;
+      font-size: 19px;
+      font-weight: 600;
+      color: $melon;
+      margin-left: 8%;
+      &::placeholder {
+        padding-left: 5px;
+        color: $melon;
+      }
+    }
+    ul {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      display: flex;
+      li {
+        margin-right: 20px;
+        a {
+          color: white;
+          text-transform: uppercase;
+          &:hover {
+            border-bottom: 1px white solid;
+          }
+        }
+      }
+    }
+  }
+}
