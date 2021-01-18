@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 95vh;
   input {
     width: 20vw;
     height: 5vh;
@@ -63,12 +63,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    button {
-      margin-bottom: 13px;
+    cursor: pointer;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 3vh;
       width: 70%;
       height: 5vh;
       border: none;
-      color: white;
       font-size: 18px;
       font-weight: 600;
       letter-spacing: 2.2px;
@@ -85,9 +88,12 @@
     }
     .social-login--github {
       background-color: black;
+      color: white;
     }
-    .social-login--facebook {
-      background-color: $blue;
+    .social-login--kakao {
+      background-color: #f9e000;
+      font-weight: 700;
+      color: $black;
     }
   }
 }
