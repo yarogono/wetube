@@ -2,10 +2,11 @@ extends layouts/main
 
 block content
     .form-container
-        .settings
+        .upload-settings
             form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-                i.fas.fa-cloud-upload-alt.fa-4x
-                .setting__video
+                .thumbnail
+                    img.thumbnail__img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfECEwHFMUU-yHM7SiS2xK8V7ETZG028TQPQ-yl7fHn-SwDe_ladHRa9UYtJhv_hqwHSZi9ku1ehA-K1C6h4ksgM8gHjuBRoxVAw&usqp=CAU&ec=45761792")
+                .fileUpload
                     label(for="file") Video File
                     input(type="file", id="file", name="videoFile", required=true, accept="video/*")
                 .setting__title

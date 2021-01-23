@@ -2,31 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.search__header {
-  margin-top: 9vh;
-  margin-bottom: 5vh;
-  font-size: 35px;
-  font-weight: 700;
-  color: $ginger;
-  width: 50%;
-}
-
-.search__videos {
-  min-height: 90vh;
-  .notFound {
-    margin-top: 10vh;
-    img {
-      border: 5px $amber solid;
-      border-radius: 140px;
-    }
-    h5 {
-      margin-top: 3vh;
-      text-align: center;
-      font-size: 50px;
-      font-weight: 600;
-      color: $ginger;
+  &__header {
+    margin-top: 9vh;
+    margin-bottom: 5vh;
+    font-size: 35px;
+    font-weight: 700;
+    color: $ginger;
+    width: 50%;
+  }
+  &__videos {
+    min-height: 90vh;
+    .notFound {
+      margin-top: 10vh;
+      img {
+        border: 5px $amber solid;
+        border-radius: 140px;
+      }
+      h5 {
+        margin-top: 3vh;
+        text-align: center;
+        font-size: 50px;
+        font-weight: 600;
+        color: $ginger;
+      }
     }
   }
 }

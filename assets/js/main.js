@@ -1,5 +1,6 @@
 import "../scss/styles.scss";
 
-const something = async () => {
-  console.log("something");
-};
+// Upload file Thumbnail
+import "./thumbnail.js";
+
+import "./videoPlayer.js";

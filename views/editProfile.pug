@@ -2,10 +2,16 @@ extends layouts/main
 
 block content
     .form-container
-        form(action=routes.editProfile, method="post")
-            label(for="avatar") Avatar
-            input(type="file", id="avatar", name="avatar")
-            input(type="text", placeholder="Name", name="name")
-            input(type="email", placeholder="Email", name="email")
-            input(type="submit", value="Update Profile")
-        a.form-container__link(href=`/users${routes.changePassword}`) Change Password
+        form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
+            .thumbnail
+                    img.thumbnail__img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png")
+            .fileUpload
+                label(for="file") Avatar
+                input(type="file", id="file", name="avatar", accept="image/*")
+            .form__content
+                i.fas.fa-id-card.fa-lg
+                input(type="text", placeholder="Name", name="name", value=loggedUser.name)
+            .form__content
+                i.fas.fa-envelope-square.fa-lg
+                input(type="email", placeholder="Email", name="email", value=loggedUser.email)
+            input.form__submit(type="submit", value="Update Profile")

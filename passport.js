@@ -32,10 +32,12 @@ passport.use(
   )
 );
 
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
+passport.serializeUser((user, done) => {
+  done(null, user._id);
 });
 
-passport.deserializeUser(function (user, done) {
-  done(null, user);
+passport.deserializeUser((id, done) => {
+  User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });

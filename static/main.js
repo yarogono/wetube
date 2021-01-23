@@ -16,7 +16,27 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\nvar something = /*#__PURE__*/function () {\n  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            console.log(\"something\");\n\n          case 1:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function something() {\n    return _ref.apply(this, arguments);\n  };\n}();\n\n//# sourceURL=webpack://wetube/./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _thumbnail_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./thumbnail.js */ \"./assets/js/thumbnail.js\");\n/* harmony import */ var _thumbnail_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_thumbnail_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _videoPlayer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./videoPlayer.js */ \"./assets/js/videoPlayer.js\");\n/* harmony import */ var _videoPlayer_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_videoPlayer_js__WEBPACK_IMPORTED_MODULE_2__);\n // Upload file Thumbnail\n\n\n\n\n//# sourceURL=webpack://wetube/./assets/js/main.js?");
+
+/***/ }),
+
+/***/ "./assets/js/thumbnail.js":
+/*!********************************!*\
+  !*** ./assets/js/thumbnail.js ***!
+  \********************************/
+/***/ (() => {
+
+eval("var UPLOAD_FILE = document.getElementById(\"file\");\nvar THUMBNAIL_IMG = document.getElementsByClassName(\"thumbnail__img\")[0]; // TO Do: 니꼬 강의 참고해서 아래 코드 정리\n\nfunction init() {\n  UPLOAD_FILE.addEventListener(\"change\", function (event) {\n    var file = event.target.files[0];\n    var fileReader = new FileReader();\n\n    if (file.type.match(\"image\")) {\n      fileReader.onload = function () {\n        var img = document.createElement(\"img\");\n        img.src = fileReader.result;\n        THUMBNAIL_IMG.src = img.src;\n      };\n\n      fileReader.readAsDataURL(file);\n    } else {\n      fileReader.onload = function () {\n        var blob = new Blob([fileReader.result], {\n          type: file.type\n        });\n        var url = URL.createObjectURL(blob);\n        var video = document.createElement(\"video\");\n\n        var timeupdate = function timeupdate() {\n          if (snapImage()) {\n            video.removeEventListener(\"timeupdate\", timeupdate);\n            video.pause();\n          }\n        };\n\n        video.addEventListener(\"loadeddata\", function () {\n          if (snapImage()) {\n            video.removeEventListener(\"timeupdate\", timeupdate);\n          }\n        });\n\n        var snapImage = function snapImage() {\n          var canvas = document.createElement(\"canvas\");\n          canvas.width = video.videoWidth;\n          canvas.height = video.videoHeight;\n          canvas.getContext(\"2d\").drawImage(video, 0, 0, canvas.width, canvas.height);\n          var image = canvas.toDataURL();\n          var success = image.length > 100000;\n\n          if (success) {\n            var img = document.createElement(\"img\");\n            img.src = image;\n            THUMBNAIL_IMG.src = img.src;\n            URL.revokeObjectURL(url);\n          }\n\n          return success;\n        };\n\n        video.addEventListener(\"timeupdate\", timeupdate);\n        video.preload = \"metadata\";\n        video.src = url; // Load video in Safari / IE11\n\n        video.muted = true;\n        video.playsInline = true;\n        video.play();\n      };\n\n      fileReader.readAsArrayBuffer(file);\n    }\n  });\n}\n\nif (UPLOAD_FILE) {\n  init();\n}\n\n//# sourceURL=webpack://wetube/./assets/js/thumbnail.js?");
+
+/***/ }),
+
+/***/ "./assets/js/videoPlayer.js":
+/*!**********************************!*\
+  !*** ./assets/js/videoPlayer.js ***!
+  \**********************************/
+/***/ (() => {
+
+eval("var videoContainer = document.getElementById(\"jsVideo\");\nvar videoPlayer = document.getElementById(\"jsVideoPlayer\"); // videoPlayer__duration\n\nvar currentTime = document.getElementById(\"currentTime\");\nvar totalTime = document.getElementById(\"totalTime\"); // videoPlayer__control\n\nvar stepBackward = document.getElementById(\"jsMediaBackward\");\nvar playBtn = document.getElementById(\"jsPlayButton\");\nvar stepForward = document.getElementById(\"jsMediaForward\"); // videoPlayer__progressbar\n// videoPlayer__volume\n\nvar volumeRange = document.getElementById(\"jsVolume\");\nvar volumeBtn = document.getElementById(\"jsVolumeBtn\"); // videoPlayer__size\n\nvar fullScrnBtn = document.getElementById(\"jsFullScreen\");\n\nfunction handlePlayClick() {\n  if (videoPlayer.paused) {\n    videoPlayer.play();\n    playBtn.innerHTML = '<i class=\"fas fa-pause fa-lg\"></i>';\n  } else {\n    videoPlayer.pause();\n    playBtn.innerHTML = '<i class=\"fas fa-play fa-lg\"></i>';\n  }\n}\n\nfunction handleBackward() {\n  videoPlayer.currentTime = videoPlayer.currentTime - 5;\n}\n\nfunction handleForward() {\n  if (videoPlayer.currentTime >= videoPlayer.duration - 5) {\n    videoPlayer.currentTime = videoPlayer.duration;\n    playBtn.innerHTML = '<i class=\"fas fa-play fa-lg\"></i>';\n  } else {\n    videoPlayer.currentTime += 5;\n  }\n}\n\nfunction handleVolumeClick() {\n  if (videoPlayer.muted) {\n    videoPlayer.muted = false;\n    volumeRange.value = videoPlayer.volume;\n\n    if (volumeRange.value >= 0.6) {\n      volumeBtn.innerHTML = '<i class=\"fas fa-volume-up fa-lg\"></i>';\n    } else if (volumeRange.value >= 0.2) {\n      volumeBtn.innerHTML = '<i class=\"fas fa-volume-down fa-lg\"></i>';\n    } else {\n      volumeBtn.innerHTML = '<i class=\"fas fa-volume-off fa-lg\"></i>';\n    }\n  } else {\n    videoPlayer.muted = true;\n    volumeBtn.innerHTML = '<i class=\"fas fa-volume-mute fa-lg\"></i>';\n    volumeRange.value = 0;\n  }\n}\n\nfunction exitFullScreen() {\n  fullScrnBtn.addEventListener(\"click\", goFullScreen);\n\n  if (document.exitFullscreen) {\n    document.exitFullscreen()[\"catch\"](function (err) {\n      return Promise.resolve(err);\n    });\n  } else if (document.mozCancelFullScreen) {\n    document.mozCancelFullScreen();\n  } else if (document.webkitExitFullscreen) {\n    document.webkitExitFullscreen();\n  } else if (document.msExitFullscreen) {\n    document.msExitFullscreen();\n  }\n}\n\nfunction goFullScreen() {\n  if (videoContainer.requestFullscreen) {\n    videoContainer.requestFullscreen();\n  } else if (videoContainer.mozRequestFullScreen) {\n    videoContainer.mozRequestFullScreen();\n  } else if (videoContainer.webkitRequestFullscreen) {\n    videoContainer.webkitRequestFullscreen();\n  } else if (videoContainer.msRequestFullscreen) {\n    videoContainer.msRequestFullscreen();\n  }\n\n  fullScrnBtn.addEventListener(\"click\", exitFullScreen);\n}\n\nfunction scrnBtnChange() {\n  if (document.fullscreenElement) {\n    fullScrnBtn.innerHTML = '<i class=\"fas fa-compress fa-2x\"></i>';\n  } else {\n    fullScrnBtn.innerHTML = '<i class=\"fas fa-expand fa-2x\"></i>';\n  }\n}\n\nvar formatDate = function formatDate(seconds) {\n  var secondsNumber = parseInt(seconds, 10);\n  var hours = Math.floor(secondsNumber / 3600);\n  var minutes = Math.floor((secondsNumber - hours * 3600) / 60);\n  var totalSeconds = secondsNumber - hours * 3600 - minutes * 60;\n\n  if (hours < 10) {\n    hours = \"0\".concat(hours);\n  }\n\n  if (minutes < 10) {\n    minutes = \"0\".concat(minutes);\n  }\n\n  if (totalSeconds < 10) {\n    totalSeconds = \"0\".concat(totalSeconds);\n  }\n\n  return \"\".concat(minutes, \":\").concat(totalSeconds);\n};\n\nfunction getCurrentTime() {\n  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));\n}\n\nfunction setTotalTime() {\n  var totalTimeString = formatDate(videoPlayer.duration);\n  totalTime.innerHTML = totalTimeString;\n  setInterval(getCurrentTime, 1000);\n}\n\nfunction handleEnded() {\n  playBtn.innerHTML = '<i class=\"fas fa-play fa-lg\"></i>';\n}\n\nfunction handleDrag(event) {\n  var value = event.target.value;\n  videoPlayer.volume = value;\n\n  if (value >= 0.6) {\n    volumeBtn.innerHTML = '<i class=\"fas fa-volume-up fa-lg\"></i>';\n  } else if (value >= 0.2) {\n    volumeBtn.innerHTML = '<i class=\"fas fa-volume-down fa-lg\"></i>';\n  } else {\n    volumeBtn.innerHTML = '<i class=\"fas fa-volume-off fa-lg\"></i>';\n  }\n} // 함수명 변경\n// 키보드 좌, 우 누를 시 mediaForward, mediaBackward\n\n\nfunction test(e) {\n  if (e.code === \"Space\") {\n    handlePlayClick();\n    e.preventDefault();\n  }\n}\n\nfunction init() {\n  // Duration\n  videoPlayer.addEventListener(\"loadedmetadata\", setTotalTime);\n  videoPlayer.addEventListener(\"ended\", handleEnded); // Control\n\n  playBtn.addEventListener(\"click\", handlePlayClick);\n  videoPlayer.addEventListener(\"click\", handlePlayClick);\n  stepBackward.addEventListener(\"click\", handleBackward);\n  stepForward.addEventListener(\"click\", handleForward);\n  window.addEventListener(\"keydown\", test); // Progressbar\n  // Volume\n\n  videoPlayer.volume = 0.5;\n  volumeBtn.addEventListener(\"click\", handleVolumeClick);\n  volumeRange.addEventListener(\"input\", handleDrag); // Size\n\n  fullScrnBtn.addEventListener(\"click\", goFullScreen);\n  document.addEventListener(\"fullscreenchange\", scrnBtnChange);\n}\n\nif (videoContainer) {\n  init();\n}\n\n//# sourceURL=webpack://wetube/./assets/js/videoPlayer.js?");
 
 /***/ }),
 
@@ -3217,6 +3237,35 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => module['default'] :
+/******/ 				() => module;
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

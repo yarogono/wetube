@@ -1,5 +1,3 @@
-import app from "./app";
-
 // Global
 const HOME = "/";
 const JOIN = "/join";
@@ -13,6 +11,7 @@ const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 const ME = "/me";
+const BASE = "http://localhost:4000/";
 
 // Videos
 const VIDEOS = "/videos";
@@ -75,6 +74,7 @@ const routes = {
   me: ME,
   kakao: KAKAO,
   kakaoCallback: KAKAO_CALLBACK,
+  base: BASE,
 };
 
 export default routes;

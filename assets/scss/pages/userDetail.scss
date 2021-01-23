@@ -1,4 +1,49 @@
 .user-profile {
-  margin-top: 7vh;
-  height: 100vh;
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .user-profile__content {
+    width: 20%;
+    height: 65%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    img {
+      width: 30vh;
+      margin-bottom: 25px;
+      border-radius: 150px;
+    }
+    .profile__username {
+      font-size: 25px;
+      margin-bottom: 50px;
+      font-weight: 600;
+    }
+    .user-profile__btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      a:first-child {
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: $amber;
+        width: 35vh;
+        height: 5vh;
+        border-radius: 30px;
+        font-size: 20px;
+        font-weight: 600;
+        box-shadow: rgba(233, 197, 40, 0.4) 0px 0px 0px 3px;
+        &:hover {
+          opacity: 0.6;
+          background-color: $melon;
+          box-shadow: rgba(233, 197, 40, 0.8) 0px 0px 0px 4px;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,40 @@
+.social-login {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vh;
+    width: 70%;
+    height: 5vh;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 15px 33px,
+      rgba(0, 0, 0, 0.22) 0px 10px 11px;
+    i {
+      margin-right: 5px;
+    }
+    transition: 0.1s opacity linear;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  .social-login--github {
+    background-color: black;
+    color: white;
+  }
+  .social-login--kakao {
+    background-color: #f9e000;
+    font-weight: 700;
+    color: $black;
+  }
+}
