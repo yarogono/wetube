@@ -438,7 +438,8 @@ textarea:focus {
 
 .video {
   width: 50vw;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .video__screen {
     display: block;
     width: 100%; }
@@ -457,19 +458,62 @@ textarea:focus {
   grid-template-columns: 1fr 1fr 2.5fr 0.5fr 1fr;
   align-items: center;
   text-align: center;
+  transform: translate(0, 100%);
+  z-index: -1;
+  opacity: 0;
   color: white;
-  opacity: 1;
   transition: 0.2s all ease-in-out;
-  background-color: rgba(68, 68, 68, 0.8); }
+  background-color: rgba(247, 152, 98, 0.7); }
   .videoPlayer__duration {
     font-size: 20px;
     opacity: 0.8; }
   .videoPlayer__control {
     display: flex;
+    align-items: center;
     justify-content: space-around;
     margin: 0 20px; }
-  .videoPlayer__progressbar input {
-    width: 100%; }
+    .videoPlayer__control li:first-child {
+      margin-right: 4px; }
+  .videoPlayer__progressbar {
+    width: 95%;
+    height: 2vh;
+    border-radius: 6px;
+    margin-right: 10px;
+    border: 1px #ffbf00 solid;
+    background-color: white;
+    display: flex;
+    z-index: 0;
+    cursor: pointer; }
+    .videoPlayer__progressbar .progressbar {
+      width: 0%;
+      border-radius: 4px;
+      background-color: #ffbf00;
+      display: flex;
+      align-items: center;
+      position: relative;
+      pointer-events: none;
+      z-index: 1; }
+      .videoPlayer__progressbar .progressbar i {
+        pointer-events: none;
+        right: -12px;
+        font-size: 0px;
+        position: absolute;
+        border-radius: 50%;
+        color: #f05e23;
+        background-color: #ffbf00;
+        transition: 0.04s all ease-in-out; }
+    .videoPlayer__progressbar .progressbar-fill {
+      width: 0px;
+      height: 1.8vh;
+      border-radius: 6px;
+      position: absolute;
+      z-index: -1;
+      pointer-events: none; }
+    .videoPlayer__progressbar:hover i {
+      font-size: 23px;
+      cursor: pointer; }
+    .videoPlayer__progressbar:hover .progressbar-fill {
+      background-color: rgba(255, 191, 0, 0.5); }
   .videoPlayer__volume {
     display: flex;
     align-items: center;
@@ -487,6 +531,8 @@ textarea:focus {
     height: 100%; }
   .videoPlayer i {
     cursor: pointer; }
+    .videoPlayer i:hover {
+      color: #0080ff; }
 
 .videos {
   width: 100%;

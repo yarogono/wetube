@@ -1,22 +1,26 @@
 const videoContainer = document.getElementById("jsVideo");
 const videoPlayer = document.getElementById("jsVideoPlayer");
 
-// videoPlayer__duration
-const currentTime = document.getElementById("currentTime");
-const totalTime = document.getElementById("totalTime");
+// Duration
+const currentTime = document.getElementById("jsCurrentTime");
+const totalTime = document.getElementById("jsTotalTime");
 
-// videoPlayer__control
+// Control
 const stepBackward = document.getElementById("jsMediaBackward");
 const playBtn = document.getElementById("jsPlayButton");
 const stepForward = document.getElementById("jsMediaForward");
 
-// videoPlayer__progressbar
+// Progressbar
+const progress = document.getElementById("jsProgress");
+const progressBar = document.getElementById("jsProgressBar");
+const progressBarDot = document.getElementById("jsProgressBarDot");
+const porgressTest = document.getElementById("jsProgressFill");
 
-// videoPlayer__volume
+// Volume
 const volumeRange = document.getElementById("jsVolume");
 const volumeBtn = document.getElementById("jsVolumeBtn");
 
-// videoPlayer__size
+// Size
 const fullScrnBtn = document.getElementById("jsFullScreen");
 
 function handlePlayClick() {
@@ -30,7 +34,7 @@ function handlePlayClick() {
 }
 
 function handleBackward() {
-  videoPlayer.currentTime = videoPlayer.currentTime - 5;
+  videoPlayer.currentTime -= 5;
 }
 
 function handleForward() {
@@ -140,13 +144,41 @@ function handleDrag(event) {
   }
 }
 
-// 함수명 변경
-// 키보드 좌, 우 누를 시 mediaForward, mediaBackward
-function test(e) {
-  if (e.code === "Space") {
+function handleKeyboardbtn(event) {
+  if (event.code === "Space") {
     handlePlayClick();
-    e.preventDefault();
+    event.preventDefault();
+  } else if (event.code === "ArrowRight") {
+    handleForward();
+  } else if (event.code === "ArrowLeft") {
+    handleBackward();
   }
+}
+
+function handleProgress() {
+  const percent = (videoPlayer.currentTime / videoPlayer.duration) * 100;
+  progressBar.style.width = `${percent}%`;
+}
+
+function scrub(event) {
+  const scrubTime =
+    (event.offsetX / progress.offsetWidth) * videoPlayer.duration;
+  videoPlayer.currentTime = scrubTime;
+}
+
+function handleProgressFill(event) {
+  let result = event.offsetX;
+  porgressTest.style.width = result + "px";
+}
+
+function handleProgressScrub() {
+  let mousedown = true;
+  progress.addEventListener("mousemove", (event) => mousedown && scrub(event));
+  progress.addEventListener("mouseup", () => (mousedown = false));
+  progress.addEventListener("mouseover", () => (mousedown = false));
+  progress.ondragstart = () => {
+    return false;
+  };
 }
 
 function init() {
@@ -159,9 +191,13 @@ function init() {
   videoPlayer.addEventListener("click", handlePlayClick);
   stepBackward.addEventListener("click", handleBackward);
   stepForward.addEventListener("click", handleForward);
-  window.addEventListener("keydown", test);
+  window.addEventListener("keydown", handleKeyboardbtn);
 
-  // Progressbar
+  // ProgressBar
+  videoPlayer.addEventListener("timeupdate", handleProgress);
+  progress.addEventListener("click", scrub);
+  progress.addEventListener("mousedown", handleProgressScrub);
+  progress.addEventListener("mousemove", handleProgressFill);
 
   // Volume
   videoPlayer.volume = 0.5;

@@ -1,7 +1,7 @@
 .video {
   width: 50vw;
   position: relative;
-  // overflow: hidden;
+  overflow: hidden;
   &__screen {
     display: block;
     width: 100%;
@@ -23,24 +23,69 @@
   grid-template-columns: 1fr 1fr 2.5fr 0.5fr 1fr;
   align-items: center;
   text-align: center;
-  // transform: translate(0, 100%);
-  // z-index: -1;
+  transform: translate(0, 100%);
+  z-index: -1;
+  opacity: 0;
   color: white;
-  opacity: 1; // 0
   transition: 0.2s all ease-in-out;
-  background-color: rgba($black, 0.8);
+  background-color: rgba($melon, 0.7);
   &__duration {
     font-size: 20px;
     opacity: 0.8;
   }
   &__control {
     display: flex;
+    align-items: center;
     justify-content: space-around;
     margin: 0 20px;
+    li:first-child {
+      margin-right: 4px;
+    }
   }
   &__progressbar {
-    input {
-      width: 100%;
+    width: 95%;
+    height: 2vh;
+    border-radius: 6px;
+    margin-right: 10px;
+    border: 1px $amber solid;
+    background-color: white;
+    display: flex;
+    z-index: 0;
+    cursor: pointer;
+    .progressbar {
+      width: 0%;
+      border-radius: 4px;
+      background-color: $amber;
+      display: flex;
+      align-items: center;
+      position: relative;
+      pointer-events: none;
+      z-index: 1;
+      i {
+        pointer-events: none;
+        right: -12px;
+        font-size: 0px;
+        position: absolute;
+        border-radius: 50%;
+        color: $salamander;
+        background-color: $amber;
+        transition: 0.04s all ease-in-out;
+      }
+    }
+    .progressbar-fill {
+      width: 0px;
+      height: 1.8vh;
+      border-radius: 6px;
+      position: absolute;
+      z-index: -1;
+      pointer-events: none;
+    }
+    &:hover i {
+      font-size: 23px;
+      cursor: pointer;
+    }
+    &:hover .progressbar-fill {
+      background-color: rgba($amber, 0.5);
     }
   }
   &__volume {
@@ -67,5 +112,8 @@
   }
   i {
     cursor: pointer;
+    &:hover {
+      color: $azure;
+    }
   }
 }

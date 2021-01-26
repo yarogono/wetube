@@ -4,18 +4,20 @@ mixin videoPlayer(video ={})
     .videoPlayer
         .videoPlayer__duration
             span
-                span#currentTime 00:00 
+                span#jsCurrentTime 00:00 
                 |/
-                span#totalTime 00:00
+                span#jsTotalTime 00:00
         ul.videoPlayer__control
-            li#jsMediaBackward
+            li#jsMediaBackward.fa-lg
                 i.fas.fa-chevron-left
             li#jsPlayButton
                 i.fas.fa-play.fa-lg
-            li#jsMediaForward
+            li#jsMediaForward.fa-lg
                 i.fas.fa-chevron-right
-        .videoPlayer__progressbar
-            input(type="range", min="0", max="100")
+        .videoPlayer__progressbar#jsProgress
+            .progressbar#jsProgressBar
+                i.fas.fa-dot-circle.fa-lg#jsProgressBarDot
+            .progressbar-fill#jsProgressFill
         .videoPlayer__volume
             input#jsVolume(type="range", min="0", max="1", step="0.1", value="0.5")
             span#jsVolumeBtn
