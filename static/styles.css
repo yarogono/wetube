@@ -262,7 +262,7 @@ textarea:focus {
     align-items: center;
     border-radius: 30px;
     width: 30%;
-    height: 65%; }
+    height: 70%; }
     .form-container form .form__content {
       display: flex;
       align-items: center;
@@ -291,7 +291,7 @@ textarea:focus {
     font-size: 20px;
     letter-spacing: 2.2px;
     font-weight: 600;
-    margin-top: 20px;
+    margin: 10px 0px;
     border-radius: 3px;
     box-shadow: rgba(233, 197, 40, 0.4) 0px 0px 0px 3px;
     transition: 0.2s all linear; }
@@ -396,52 +396,50 @@ textarea:focus {
     color: #be5504;
     letter-spacing: 1.5px; }
 
-.upload-form {
-  padding: 50px 0; }
-  .upload-form__preview {
-    width: 80%;
-    height: 50%;
-    margin-bottom: 10px;
+.upload-form__preview {
+  width: 80%;
+  height: 50%;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .upload-form__preview video {
+    width: 100%;
+    border-radius: 15px;
+    background-color: rgba(247, 152, 98, 0.3); }
+  .upload-form__preview img {
+    width: 50%;
+    border-radius: 15px; }
+
+.upload-form__fileUpload {
+  width: 15.5vw;
+  height: 5vh;
+  margin-bottom: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .upload-form__fileUpload label,
+  .upload-form__fileUpload button {
+    margin: 7px;
     display: flex;
     justify-content: center;
-    align-items: center; }
-    .upload-form__preview video {
-      width: 90%;
-      height: 100%;
-      border-radius: 15px;
-      background-color: rgba(247, 152, 98, 0.3); }
-    .upload-form__preview img {
-      width: 50%;
-      border-radius: 15px; }
-  .upload-form__fileUpload {
-    width: 15.5vw;
-    height: 5vh;
-    margin-bottom: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .upload-form__fileUpload label,
-    .upload-form__fileUpload button {
-      margin: 7px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 45%;
-      height: 80%;
-      background-color: #ffbf00;
-      border-radius: 4px;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-      transition: 0.2s all linear; }
-      .upload-form__fileUpload label:hover,
-      .upload-form__fileUpload button:hover {
-        opacity: 0.7;
-        background-color: #be5504;
-        color: #ffbf00; }
-    .upload-form__fileUpload input {
-      display: none; }
+    align-items: center;
+    width: 45%;
+    height: 80%;
+    background-color: #ffbf00;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition: 0.2s all linear; }
+    .upload-form__fileUpload label:hover,
+    .upload-form__fileUpload button:hover {
+      opacity: 0.7;
+      background-color: #be5504;
+      color: #ffbf00; }
+  .upload-form__fileUpload input {
+    display: none; }
 
 .video {
   width: 50vw;

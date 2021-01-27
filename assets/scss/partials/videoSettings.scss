@@ -52,7 +52,6 @@
 }
 
 .upload-form {
-  padding: 50px 0;
   &__preview {
     width: 80%;
     height: 50%;
@@ -61,8 +60,7 @@
     justify-content: center;
     align-items: center;
     video {
-      width: 90%;
-      height: 100%;
+      width: 100%;
       border-radius: 15px;
       background-color: rgba($melon, 0.3);
     }
