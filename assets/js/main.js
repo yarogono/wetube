@@ -1,6 +1,8 @@
 import "../scss/styles.scss";
 
-// Upload file Thumbnail
-import "./thumbnail.js";
-
+// Components
 import "./videoPlayer.js";
+import "./thumbnailUpload.js";
+
+// Upload
+import "./videoRecorder.js";

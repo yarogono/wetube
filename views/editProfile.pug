@@ -3,11 +3,11 @@ extends layouts/main
 block content
     .form-container
         form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
-            .thumbnail
-                    img.thumbnail__img(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png")
-            .fileUpload
-                label(for="file") Avatar
-                input(type="file", id="file", name="avatar", accept="image/*")
+            .upload-form__preview
+                    img#jsThumbnail(src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png")
+            .upload-form__fileUpload
+                label(for="jsUploadfile") Avatar
+                input(type="file", id="jsUploadfile", name="avatar", accept="image/*")
             .form__content
                 i.fas.fa-id-card.fa-lg
                 input(type="text", placeholder="Name", name="name", value=loggedUser.name)

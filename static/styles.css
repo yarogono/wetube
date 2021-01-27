@@ -345,40 +345,34 @@ textarea:focus {
     font-weight: 700;
     color: #444444; }
 
-.upload-settings,
-.editVideo-settings {
+.video-settings {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center; }
-  .upload-settings .setting__title,
-  .editVideo-settings .setting__title {
+  .video-settings__title {
     width: 21vw;
     border: 2px #ffbf00 solid;
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
     margin-bottom: 2vh; }
-    .upload-settings .setting__title input,
-    .editVideo-settings .setting__title input {
+    .video-settings__title input {
       border-radius: 7px;
       font-size: 20px;
       padding: 5px; }
-      .upload-settings .setting__title input::-moz-placeholder, .editVideo-settings .setting__title input::-moz-placeholder {
+      .video-settings__title input::-moz-placeholder {
         font-size: 20px; }
-      .upload-settings .setting__title input:-ms-input-placeholder, .editVideo-settings .setting__title input:-ms-input-placeholder {
+      .video-settings__title input:-ms-input-placeholder {
         font-size: 20px; }
-      .upload-settings .setting__title input::placeholder,
-      .editVideo-settings .setting__title input::placeholder {
+      .video-settings__title input::placeholder {
         font-size: 20px; }
-  .upload-settings .setting__description,
-  .editVideo-settings .setting__description {
+  .video-settings__description {
     width: 22vw;
     border: 2px #ffbf00 solid;
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px; }
-    .upload-settings .setting__description textarea,
-    .editVideo-settings .setting__description textarea {
+    .video-settings__description textarea {
       border-radius: 7px;
       border: none;
       width: 100%;
@@ -386,55 +380,68 @@ textarea:focus {
       min-height: 15vh;
       padding: 10px;
       resize: none; }
-      .upload-settings .setting__description textarea::-moz-placeholder, .editVideo-settings .setting__description textarea::-moz-placeholder {
+      .video-settings__description textarea::-moz-placeholder {
         font-size: 20px;
         font-weight: 600; }
-      .upload-settings .setting__description textarea:-ms-input-placeholder, .editVideo-settings .setting__description textarea:-ms-input-placeholder {
+      .video-settings__description textarea:-ms-input-placeholder {
         font-size: 20px;
         font-weight: 600; }
-      .upload-settings .setting__description textarea::placeholder,
-      .editVideo-settings .setting__description textarea::placeholder {
+      .video-settings__description textarea::placeholder {
         font-size: 20px;
         font-weight: 600; }
-  .upload-settings h3,
-  .editVideo-settings h3 {
+  .video-settings h3 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 1.5vh;
     color: #be5504;
     letter-spacing: 1.5px; }
 
-.thumbnail {
-  width: 50%;
-  height: 35%;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center; }
-  .thumbnail img {
-    width: 100%;
-    border-radius: 15px; }
-
-.fileUpload {
-  width: 21vw;
-  height: 5vh;
-  margin-bottom: 1vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .fileUpload label {
-    padding: 10px 27px;
-    background-color: #ffbf00;
-    border-radius: 4px;
-    color: white;
-    font-weight: 700;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    transition: 0.2s all linear; }
-    .fileUpload label:hover {
-      opacity: 0.7;
-      background-color: #be5504;
-      color: #ffbf00; }
-  .fileUpload input {
-    display: none; }
+.upload-form {
+  padding: 50px 0; }
+  .upload-form__preview {
+    width: 80%;
+    height: 50%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .upload-form__preview video {
+      width: 90%;
+      height: 100%;
+      border-radius: 15px;
+      background-color: rgba(247, 152, 98, 0.3); }
+    .upload-form__preview img {
+      width: 50%;
+      border-radius: 15px; }
+  .upload-form__fileUpload {
+    width: 15.5vw;
+    height: 5vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .upload-form__fileUpload label,
+    .upload-form__fileUpload button {
+      margin: 7px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 45%;
+      height: 80%;
+      background-color: #ffbf00;
+      border-radius: 4px;
+      color: white;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      transition: 0.2s all linear; }
+      .upload-form__fileUpload label:hover,
+      .upload-form__fileUpload button:hover {
+        opacity: 0.7;
+        background-color: #be5504;
+        color: #ffbf00; }
+    .upload-form__fileUpload input {
+      display: none; }
 
 .video {
   width: 50vw;

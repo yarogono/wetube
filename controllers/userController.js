@@ -68,7 +68,6 @@ export const postGithubLogIn = (req, res) => {
 export const kakaoLogin = passport.authenticate("kakao");
 
 export const kakaoLoginCallback = async (_, __, profile, cb) => {
-  console.log(profile);
   const {
     id,
     username: name,

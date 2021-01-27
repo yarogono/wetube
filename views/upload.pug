@@ -2,15 +2,16 @@ extends layouts/main
 
 block content
     .form-container
-        .upload-settings
-            form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-                .thumbnail
-                    img.thumbnail__img(src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfECEwHFMUU-yHM7SiS2xK8V7ETZG028TQPQ-yl7fHn-SwDe_ladHRa9UYtJhv_hqwHSZi9ku1ehA-K1C6h4ksgM8gHjuBRoxVAw&usqp=CAU&ec=45761792")
-                .fileUpload
-                    label(for="file") Video File
-                    input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-                .setting__title
+        .video-settings
+            form.upload-form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+                .upload-form__preview#jsThumbnailContainer
+                    video#jsVideoPreview
+                .upload-form__fileUpload
+                    label(for="jsUploadfile") Video File
+                    input(type="file", id="jsUploadfile", name="videoFile", required=true, accept="video/*")
+                    button(type="button")#jsRecordBtn Start Recording
+                .video-settings__title
                     input(type="text", placeholder="Title", name="title", required=true)
-                .setting__description
+                .video-settings__description
                     textarea(name="description", placeholder="Description", required=true)
                 input.form__submit(type="submit", value="Upload Video")
