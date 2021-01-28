@@ -23,6 +23,13 @@ const volumeBtn = document.getElementById("jsVolumeBtn");
 // Size
 const fullScrnBtn = document.getElementById("jsFullScreen");
 
+const registerView = () => {
+  const videoId = window.location.href.split("/videos/")[1];
+  fetch(`/api/${videoId}/view`, {
+    method: "POST",
+  });
+};
+
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
@@ -127,6 +134,7 @@ function setTotalTime() {
 }
 
 function handleEnded() {
+  registerView();
   playBtn.innerHTML = '<i class="fas fa-play fa-lg"></i>';
 }
 

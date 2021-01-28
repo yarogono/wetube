@@ -1,3 +1,5 @@
+const BASE = "http://localhost:4000/";
+
 // Global
 const HOME = "/";
 const JOIN = "/join";
@@ -11,7 +13,6 @@ const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 const ME = "/me";
-const BASE = "http://localhost:4000/";
 
 // Videos
 const VIDEOS = "/videos";
@@ -29,6 +30,12 @@ const GITHUB_CALLBACK = "/auth/github/callback";
 
 const KAKAO = "/auth/kakao";
 const KAKAO_CALLBACK = "/auth/kakao/callback";
+
+// API
+
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -75,6 +82,9 @@ const routes = {
   kakao: KAKAO,
   kakaoCallback: KAKAO_CALLBACK,
   base: BASE,
+  api: API,
+  registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 
 export default routes;

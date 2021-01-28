@@ -5,34 +5,22 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  &__content {
+  /*
+   video-detail__info
+  */
+  &__info {
     margin-top: 3vh;
-    width: 55vw;
+    width: 50%;
     display: flex;
     border-bottom: 1px solid $amber;
     flex-direction: column;
-    .video__edit {
-      font-size: 15px;
-      font-weight: 600;
-      color: white;
-      align-self: flex-end;
-      background-color: $amber;
-      padding: 3px;
-      border-radius: 5px;
-      &:hover {
-        background-color: orange;
-        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 1px,
-          rgba(6, 24, 44, 0.65) 0px 3px 5px -1px,
-          rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-      }
-      i {
-        color: $ginger;
-        opacity: 0.7;
-        width: 100%;
-        span {
-          margin-left: 10px;
-          color: $black;
-        }
+    i {
+      color: $ginger;
+      opacity: 0.6;
+      width: 100%;
+      span {
+        margin-left: 10px;
+        color: $black;
       }
     }
   }
@@ -44,14 +32,89 @@
     text-overflow: ellipsis;
     color: $ginger;
   }
+  &__edit {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    align-self: flex-end;
+    background-color: $amber;
+    padding: 3px;
+    border-radius: 5px;
+    &:hover {
+      background-color: orange;
+      box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 1px,
+        rgba(6, 24, 44, 0.65) 0px 3px 5px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+  }
+  &__author {
+    margin-top: 1vh;
+    a {
+      font-size: 24px;
+      margin-left: 5px;
+      color: $amber;
+      font-weight: 600;
+      &:hover {
+        color: $salamander;
+      }
+    }
+  }
   &__description {
     width: 100%;
-    margin-top: 4vh;
-    margin-bottom: 4vh;
+    margin: 4vh 0;
     font-size: 18px;
   }
-  &__comments {
+
+  /*
+    video-detail__comment-container
+  */
+  &__comment-container {
     margin-top: 3vh;
-    width: 55vw;
+    width: 50%;
+  }
+  &__comment {
+    color: $black;
+    font-size: 20px;
+    font-weight: 600;
+    span {
+      color: $melon;
+    }
+  }
+  &__add-comment {
+    margin: 15px 0;
+    input {
+      border: 2px rgba($salamander, 0.5) solid;
+      box-shadow: rgba($salamander, 0.2) 0px 3px 3px 0px;
+      border-radius: 10px;
+      width: 100%;
+      height: 5vh;
+      cursor: text;
+      font-size: 20px;
+      margin-bottom: 25px;
+      &::placeholder {
+        padding-left: 10px;
+      }
+      &:focus {
+        border: 2px rgba($salamander, 0.7) solid;
+      }
+    }
+  }
+  &__comments-list {
+    font-size: 19px;
+    color: $ginger;
+    font-weight: 600;
+    width: 100%;
+    li {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px $melon solid;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      span {
+        margin-left: 15px;
+        word-break: break-all;
+      }
+    }
   }
 }

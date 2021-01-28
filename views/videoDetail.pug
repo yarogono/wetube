@@ -6,18 +6,29 @@ block content
         +videoPlayer({
             src:video.fileUrl
         })
-        .video-detail__content
+        .video-detail__info
             h5.video-detail__title=video.title
             if loggedUser && video.creator.id === loggedUser.id
-                    a(href=routes.editVideo(video.id)).video__edit Edit video
-            i.fas.fa-play
-                span.video__views=video.views
-            p.video-detail__description=video.description
+                    a.video-detail__edit(href=routes.editVideo(video.id)) Edit video
+            i.fas.fa-caret-square-right.fa-lg
+                span.video-detail__views=video.views
+                    | views
             .video-detail__author
                 |Uploaded by
                 a(href=routes.userDetail(video.creator._id))=video.creator.name
-        .video-detail__comments
+            p.video-detail__description=video.description
+        .video-detail__comment-container
             if video.comments.length === 1
-                span.video__views 1 view
+                span.video-detail__comment
+                    |  Comments: 
+                    span#jsCommentNumber 1 
             else
-                span.video__views #{video.views} views
+                span.video-detail__comment
+                    |  Comments: 
+                    span#jsCommentNumber=video.comments.length
+            form.video-detail__add-comment#jsAddComment
+                input(type="text", placeholder="😀 Add a comment")
+            ul.video-detail__comments-list#jsCommentList
+                each comment in video.comments.reverse()
+                    li
+                        span=comment.text

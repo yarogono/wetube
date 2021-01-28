@@ -1,8 +1,11 @@
 import "../scss/styles.scss";
 
 // Components
-import "./videoPlayer.js";
-import "./thumbnailUpload.js";
+import "./videoPlayer";
+import "./thumbnailUpload";
 
 // Upload
-import "./videoRecorder.js";
+import "./videoRecorder";
+
+// Comment
+import "./addComment";
