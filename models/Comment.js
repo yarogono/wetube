@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment";
 
 const CommentSchema = new mongoose.Schema({
   text: {
@@ -6,8 +7,8 @@ const CommentSchema = new mongoose.Schema({
     required: "Text is required",
   },
   createdAt: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: moment(Date.now()).format("MMM, Do YY, HH:mm"),
   },
   creator: {
     type: mongoose.Schema.Types.ObjectId,

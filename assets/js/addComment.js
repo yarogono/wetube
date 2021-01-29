@@ -5,7 +5,7 @@ const commentList = document.getElementById("jsCommentList");
 const commetNumber = document.getElementById("jsCommentNumber");
 
 const increaseNumber = () => {
-  conmmetNumber.innerHTML = parseInt(commet.innerHTML, 10) + 1;
+  commetNumber.innerHTML = parseInt(commetNumber.innerHTML, 10) + 1;
 };
 
 const addComment = (comment) => {

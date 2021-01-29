@@ -581,7 +581,7 @@ textarea:focus {
 
 .video-detail {
   min-height: 100vh;
-  margin-top: 7vh;
+  margin-top: 10vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -598,20 +598,27 @@ textarea:focus {
     display: flex;
     border-bottom: 1px solid #ffbf00;
     flex-direction: column; }
-    .video-detail__info i {
-      color: #be5504;
-      opacity: 0.6;
-      width: 100%; }
-      .video-detail__info i span {
-        margin-left: 10px;
-        color: #444444; }
   .video-detail__title {
     font-size: 35px;
     line-height: 29px;
     font-weight: 600;
     width: 100%;
     text-overflow: ellipsis;
-    color: #be5504; }
+    color: #be5504;
+    margin-bottom: 15px; }
+  .video-detail__views {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+    .video-detail__views i {
+      display: flex;
+      color: #be5504;
+      opacity: 0.6; }
+      .video-detail__views i span {
+        margin-left: 7px;
+        font-size: 16px;
+        font-weight: 600; }
   .video-detail__edit {
     font-size: 15px;
     font-weight: 600;

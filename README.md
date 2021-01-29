@@ -19,7 +19,8 @@ Cloning Youtube with Vanilla and NodeJS
 
   1.29(금)
 
-* 카카오TV 참고
+카카오TV 참고
 
 - [] 코멘트 지우기 버튼
 - [] 코멘트 작성자 삽입
+- [x] 비디오 작성시간(Moment.js 사용)

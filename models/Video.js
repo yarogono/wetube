@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import moment from "moment"; // 지울지 결정
 
 const VideoSchema = new mongoose.Schema({
   fileUrl: {
@@ -15,8 +16,8 @@ const VideoSchema = new mongoose.Schema({
     default: 0,
   },
   createdAt: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: moment(Date.now()).format("MMM, Do YY, HH:mm"),
   },
   comments: [
     {
