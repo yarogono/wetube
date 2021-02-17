@@ -1,4 +1,3 @@
-const thumbnail = document.getElementById("jsThumbnailContainer");
 const recordBtn = document.getElementById("jsRecordBtn");
 const videoPreview = document.getElementById("jsVideoPreview");
 

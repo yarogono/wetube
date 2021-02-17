@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import moment from "moment"; // 지울지 결정
+import moment from "moment";
 
 const VideoSchema = new mongoose.Schema({
   fileUrl: {

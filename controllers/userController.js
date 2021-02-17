@@ -104,7 +104,7 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
-export const getMe = (req, res) => {
+export const getMe = async (req, res) => {
   res.render("userDetail", { pageTitle: "User Detail", user: req.user });
 };
 
@@ -114,9 +114,9 @@ export const userDetail = async (req, res) => {
   } = req;
   try {
     const user = await User.findById(id).populate("videos");
-    console.log(user);
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
+    console.log(error);
     res.redirect(routes.home);
   }
 };

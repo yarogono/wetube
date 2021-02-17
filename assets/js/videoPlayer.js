@@ -13,7 +13,6 @@ const stepForward = document.getElementById("jsMediaForward");
 // Progressbar
 const progress = document.getElementById("jsProgress");
 const progressBar = document.getElementById("jsProgressBar");
-const progressBarDot = document.getElementById("jsProgressBarDot");
 const porgressTest = document.getElementById("jsProgressFill");
 
 // Volume

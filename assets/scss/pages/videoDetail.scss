@@ -80,7 +80,7 @@
     margin-top: 3vh;
     width: 50%;
   }
-  &__comment {
+  &__comment-count {
     color: $black;
     font-size: 20px;
     font-weight: 600;
@@ -90,6 +90,7 @@
   }
   &__add-comment {
     margin: 15px 0;
+    width: 90%;
     input {
       border: 2px rgba($salamander, 0.5) solid;
       box-shadow: rgba($salamander, 0.2) 0px 3px 3px 0px;
@@ -107,21 +108,52 @@
       }
     }
   }
-  &__comments-list {
+  &__comments {
     font-size: 19px;
     color: $ginger;
     font-weight: 600;
     width: 100%;
-    li {
+    &__block {
       margin-bottom: 30px;
       padding-bottom: 20px;
       border-bottom: 1px $melon solid;
       width: 90%;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      span {
-        margin-left: 15px;
-        word-break: break-all;
+      li {
+        a {
+          color: $azure;
+        }
+        span {
+          margin-left: 15px;
+          color: rgba($black, 0.5);
+        }
+        p {
+          width: 35vw;
+          word-break: break-all;
+          margin-top: 13px;
+        }
+      }
+      a {
+        background-color: white;
+        width: 4vw;
+        height: 5vh;
+        border: 1px solid $black;
+        background-color: rgba($melon, 0.4);
+        border-radius: 15px;
+        color: $salamander;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 4px 4px rgba($black, 0.5);
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.2s background-color linear;
+        &:hover {
+          background-color: rgba($salamander, 0.7);
+          color: white;
+        }
       }
     }
   }

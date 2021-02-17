@@ -7,7 +7,8 @@ import "./thumbnailUpload";
 // Upload
 import "./videoRecorder";
 
-// Comment
+// Video Comment
 import "./addComment";
+import "./deleteComment";
 
 // Video Detail

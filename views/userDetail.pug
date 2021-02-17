@@ -4,7 +4,7 @@ include mixins/videoBlock
 block content
    .user-profile
         .user-profile__content
-            img.avatar(src=`${routes.base}${user.avatarUrl}`)
+            img.avatar(src=user.avatarUrl)
             h4.profile__username=user.name
             if loggedUser && user.id === loggedUser.id
                 .user-profile__btns
@@ -16,7 +16,7 @@ block content
             each item in user.videos
                 .videosBlocks
                     +videoBlock({
-                        id: item.id,
+                        id: item._id,
                         title:item.title,
                         views:item.views,
                         videoFile:item.fileUrl,

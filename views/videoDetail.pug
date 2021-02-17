@@ -22,18 +22,21 @@ block content
             p.video-detail__description=video.description
         .video-detail__comment-container
             if video.comments.length === 1
-                span.video-detail__comment
+                span.video-detail__comment-count
                     |  Comments: 
                     span#jsCommentNumber 1 
             else
-                span.video-detail__comment
+                span.video-detail__comment-count
                     |  Comments: 
                     span#jsCommentNumber=video.comments.length
             form.video-detail__add-comment#jsAddComment
                 input(type="text", placeholder="😀 Add a comment")
-            ul.video-detail__comments-list#jsCommentList
+            ul.video-detail__comments#jsCommentList
                 each comment in video.comments.reverse()
-                    li
-                        a(href=routes.userDetail(comment.creator._id))=comment.creator
-                        span=comment.createdAt
-                        span=comment.text
+                    .video-detail__comments__block(id=comment.id)
+                        li
+                            a(href=routes.userDetail(comment.creator._id))=comment.name
+                            span=comment.createdAt
+                            p=comment.text
+                        if loggedUser && comment.creator == loggedUser.id
+                            button Delete

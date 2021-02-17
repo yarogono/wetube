@@ -106,7 +106,7 @@ export const deleteVideo = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
-    if (video.creator !== req.user.id) {
+    if (video.creator != req.user.id) {
       throw Error();
     } else {
       await Video.findOneAndRemove({ _id: id });
@@ -135,7 +135,7 @@ export const postRegisterView = async (req, res) => {
   }
 };
 
-// Add Comment
+// Comment
 
 export const postAddComment = async (req, res) => {
   const {
@@ -148,15 +148,29 @@ export const postAddComment = async (req, res) => {
     const newComment = await Comment.create({
       text: comment,
       creator: user.id,
+      name: user.name,
     });
     video.comments.push(newComment.id);
     video.save();
   } catch (error) {
     console.log(error);
-    if (id === undefined) {
-      res.redirect(routes.home);
-    }
     res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
+export const postDeleteComment = async (req, res) => {
+  const {
+    params: { id },
+    body: { commentId },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    video.comments.remove(commentId);
+    video.save();
+  } catch (error) {
+    console.log(error);
   } finally {
     res.end();
   }
