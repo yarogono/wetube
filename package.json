@@ -41,9 +41,9 @@
     "dev:assets": "cd src && cross-env WEBPACK_ENV=development && webpack -w",
     "build:assets": "cd src && cross-env WEBPACK_ENV=production && webpack",
     "build:server": "babel src --out-dir build --ignore src/static --ignore src/assets --ignore src/webpack.config.js",
-    "copyAll": "shx src\\static build\\static /d /e /h /c /y /i && shx src\\views build\\views /d /e /h /c /y /i",
+    "copyAll": "shx cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild": "shx /s \"build\"",
+    "prebuild": "shx -rf build",
     "start": "node build/init.js",
     "tunnel": "lt --port 4000",
     "prestart": "npm run build"
