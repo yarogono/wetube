@@ -1,0 +1,19 @@
+extends layouts/main
+
+block content
+    .form-container
+        form(action=routes.join, method="post")
+            .form__content
+                i.fas.fa-user.fa-lg
+                input(type="text", name="name", placeholder="Full Name", required=true)
+            .form__content
+                i.fas.fa-envelope-square.fa-lg
+                input(type="email", name="email", placeholder="Email", required=true)
+            .form__content    
+                i.fas.fa-unlock-alt.fa-lg
+                input(type="password", name="password", placeholder="Password", required=true)
+            .form__content    
+                i.fas.fa-unlock-alt.fa-lg
+                input(type="password", name="password2", placeholder="Confirm Password", required=true)
+            input.form__submit(type="submit", value="Sign Up")
+            include partials/socialLogin
