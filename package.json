@@ -43,7 +43,7 @@
     "build:server": "babel src --out-dir build --ignore src/static --ignore src/assets --ignore src/webpack.config.js",
     "copyAll": "shx cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
-    "prebuild": "shx -rf build",
+    "prebuild": "shx rm -r build",
     "start": "node build/init.js",
     "tunnel": "lt --port 4000",
     "prestart": "npm run build"
