@@ -23,10 +23,10 @@ const config = {
         test: /\.(scss)$/,
         use: [
           {
-            loader: "css-loader",
+            loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: "css-loader",
           },
           {
             loader: "postcss-loader",
@@ -55,13 +55,7 @@ const config = {
     path: OUTPUT_DIR,
     filename: "[name].js",
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "styles.css",
-    }),
-  ],
+  plugins: [new MiniCssExtractPlugin({ filename: "styles.css" })],
 };
 
 module.exports = config;
