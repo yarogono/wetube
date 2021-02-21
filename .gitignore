@@ -117,6 +117,5 @@ dist
 
 package-lock.json
 uploads
-static
 .env
 build
