@@ -3,7 +3,7 @@ extends layouts/main
 block content
     .form-container
         .video-settings
-            form.upload-form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+            form.upload-form(action=routes.videos+routes.upload, method="post", enctype="multipart/form-data")
                 .upload-form__preview#jsThumbnailContainer
                     video#jsVideoPreview
                 .upload-form__fileUpload
