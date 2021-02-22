@@ -44,6 +44,6 @@ globalRouter.get(
   postKakaoLogIn
 );
 
-globalRouter.get(routes.me, getMe);
+globalRouter.get(routes.me, onlyPrivate, getMe);
 
 export default globalRouter;

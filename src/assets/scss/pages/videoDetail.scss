@@ -117,7 +117,7 @@
       margin-bottom: 30px;
       padding-bottom: 20px;
       border-bottom: 1px $melon solid;
-      width: 90%;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -135,10 +135,10 @@
           margin-top: 13px;
         }
       }
-      a {
+      button {
         background-color: white;
-        width: 4vw;
-        height: 5vh;
+        width: 3vw;
+        height: 6vh;
         border: 1px solid $black;
         background-color: rgba($melon, 0.4);
         border-radius: 15px;
