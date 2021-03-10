@@ -1,27 +1,27 @@
 mixin videoPlayer(video ={})
   .video#jsVideo
     video.video__screen(src=video.src)#jsVideoPlayer
-    .videoPlayer
-        .videoPlayer__duration
+    .videoController#jsVideoController
+        .videoController__duration
             span
                 span#jsCurrentTime 00:00 
                 |/
                 span#jsTotalTime 00:00
-        ul.videoPlayer__control
-            li#jsMediaBackward.fa-lg
+        ul.videoController__control
+            li#jsMediaBackward.fa-2x
                 i.fas.fa-chevron-left
             li#jsPlayButton
-                i.fas.fa-play.fa-lg
-            li#jsMediaForward.fa-lg
+                i.fas.fa-play.fa-2x
+            li#jsMediaForward.fa-2x
                 i.fas.fa-chevron-right
-        .videoPlayer__progressbar#jsProgress
+        .videoController__progressbar#jsProgress
             .progressbar#jsProgressBar
-                i.fas.fa-dot-circle.fa-lg
+                i.fas.fa-dot-circle.fa-2x
             .progressbar-fill#jsProgressFill
-        .videoPlayer__volume
+        .videoController__volume
             input#jsVolume(type="range", min="0", max="1", step="0.1", value="0.5")
             span#jsVolumeBtn
-                i.fas.fa-volume-up.fa-lg
-        .videoPlayer__size
+                i.fas.fa-volume-up.fa-2x
+        .videoController__size
             span#jsFullScreen
                 i.fas.fa-expand.fa-2x

@@ -1,5 +1,6 @@
 const videoContainer = document.getElementById("jsVideo");
 const videoPlayer = document.getElementById("jsVideoPlayer");
+const videoController = document.getElementById("jsVideoController");
 
 // Duration
 const currentTime = document.getElementById("jsCurrentTime");
@@ -21,6 +22,8 @@ const volumeBtn = document.getElementById("jsVolumeBtn");
 
 // Size
 const fullScrnBtn = document.getElementById("jsFullScreen");
+
+let timeout;
 
 const registerView = () => {
   const videoId = window.location.href.split("/videos/")[1];
@@ -57,15 +60,15 @@ function handleVolumeClick() {
     videoPlayer.muted = false;
     volumeRange.value = videoPlayer.volume;
     if (volumeRange.value >= 0.6) {
-      volumeBtn.innerHTML = '<i class="fas fa-volume-up fa-lg"></i>';
+      volumeBtn.innerHTML = '<i class="fas fa-volume-up fa-2x"></i>';
     } else if (volumeRange.value >= 0.2) {
-      volumeBtn.innerHTML = '<i class="fas fa-volume-down fa-lg"></i>';
+      volumeBtn.innerHTML = '<i class="fas fa-volume-down fa-2x"></i>';
     } else {
-      volumeBtn.innerHTML = '<i class="fas fa-volume-off fa-lg"></i>';
+      volumeBtn.innerHTML = '<i class="fas fa-volume-off fa-2x"></i>';
     }
   } else {
     videoPlayer.muted = true;
-    volumeBtn.innerHTML = '<i class="fas fa-volume-mute fa-lg"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute fa-2x"></i>';
     volumeRange.value = 0;
   }
 }
@@ -134,7 +137,7 @@ function setTotalTime() {
 
 function handleEnded() {
   registerView();
-  playBtn.innerHTML = '<i class="fas fa-play fa-lg"></i>';
+  playBtn.innerHTML = '<i class="fas fa-play fa-2x"></i>';
 }
 
 function handleDrag(event) {
@@ -143,11 +146,11 @@ function handleDrag(event) {
   } = event;
   videoPlayer.volume = value;
   if (value >= 0.6) {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up fa-lg"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up fa-2x"></i>';
   } else if (value >= 0.2) {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-down fa-lg"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down fa-2x"></i>';
   } else {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-off fa-lg"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-volume-off fa-2x"></i>';
   }
 }
 
@@ -188,6 +191,21 @@ function handleProgressScrub() {
   };
 }
 
+function checkMouseAfk() {
+  videoController.style.zIndex = "0";
+  videoController.style.opacity = "1";
+  videoController.style.transform = "translate(0, 0)";
+  videoContainer.style.cursor = "auto";
+
+  clearTimeout(timeout);
+  timeout = setTimeout(() => {
+    videoController.style.opacity = "0";
+    videoController.style.zIndex = "-1";
+    videoController.style.transform = "translate(0, 100%)";
+    videoContainer.style.cursor = "none";
+  }, 5000);
+}
+
 function init() {
   // Duration
   videoPlayer.addEventListener("loadedmetadata", setTotalTime);
@@ -214,6 +232,10 @@ function init() {
   // Size
   fullScrnBtn.addEventListener("click", goFullScreen);
   document.addEventListener("fullscreenchange", scrnBtnChange);
+
+  //
+  videoContainer.addEventListener("mousemove", checkMouseAfk);
+  videoContainer.addEventListener("click", checkMouseAfk);
 }
 
 if (videoContainer) {
