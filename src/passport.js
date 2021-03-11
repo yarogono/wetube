@@ -15,7 +15,9 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: `https://fathomless-reef-72658.herokuapp.com${routes.githubCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://fathomless-reef-72658.herokuapp.com${routes.githubCallback}`
+        : `http://localhost:4000${routes.githubCallback}`,
     },
     githubLoginCallback
   )
@@ -26,7 +28,9 @@ passport.use(
     {
       clientID: process.env.KAKAO_ID,
       clientSecret: "",
-      callbackURL: `https://fathomless-reef-72658.herokuapp.com${routes.kakaoCallback}`,
+      callbackURL: process.env.PRODUCTION
+        ? `https://fathomless-reef-72658.herokuapp.com${routes.kakaoCallback}`
+        : `http://localhost:4000${routes.githubCallback}`,
     },
     kakaoLoginCallback
   )
